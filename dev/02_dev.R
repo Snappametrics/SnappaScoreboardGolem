@@ -16,6 +16,19 @@
 ## Dependencies ----
 ## Add one line by package you want to add as dependency
 usethis::use_package( "thinkr" )
+usethis::use_package( "shiny" )
+usethis::use_package( "shinyjs" )
+usethis::use_package( "shinyWidgets" )
+usethis::use_package( "shinydashboard" )
+usethis::use_package( "shinydashboardPlus" )
+usethis::use_package( "htmltools" )
+usethis::use_package( "stringr" )
+usethis::use_package( "dplyr" )
+usethis::use_package( "lubridate" )
+usethis::use_package( "RPostgres" )
+usethis::use_package( "dbplyr" )
+usethis::use_package( "keyring" )
+usethis::use_package( "pool" )
 
 ## Add modules ----
 ## Create a module infrastructure in R/
