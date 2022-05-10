@@ -6,5 +6,9 @@
 #' @noRd
 app_server <- function( input, output, session ) {
   # Your application server logic 
+  observeEvent(input$`score-button`, {
+    shiny::showModal(mod_score_input_shinipsum_ui('team_scored'))
+                   
+  })
   
 }
