@@ -8,7 +8,7 @@
 #'
 #' @importFrom shiny NS tagList 
 #' @import shinipsum
-mod_score_input_shinipsum_ui <- function(id){
+mod_score_input_shinipsum_ui <- function(id, scoring_team_color, defense_team_color){
   # For now, this has some fun stuff around allowing for a progressive selection of elements using some JS. 
   # This will have to be reasoned on in a more comprehensive way when we get to defining server logic, but 
   # I'm thinking that the selection of each radio element can be passed through the function argument so that
@@ -97,7 +97,7 @@ mod_score_input_shinipsum_ui <- function(id){
               style = 'display:none'
             )
           )
-        ),
+          ),
         tabPanel(
           icon = shiny::icon('hand-paper'),
           title = 'Assists',
