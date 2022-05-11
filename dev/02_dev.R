@@ -46,7 +46,9 @@ golem::add_utils( "helpers" )
 golem::add_js_file( "script" )
 golem::add_js_handler( "handlers" )
 golem::add_css_file( "custom" )
-
+# Adds a css file that handles modal dialogs to override shiny defaults
+golem::add_css_file( "modal" )
+golem::add_css_file('score-entry')
 ## Add internal datasets ----
 ## If you have data in your package
 usethis::use_data_raw( name = "my_dataset", open = FALSE ) 
