@@ -13,6 +13,15 @@ mod_score_input_shinipsum_ui <- function(id){
   # This will have to be reasoned on in a more comprehensive way when we get to defining server logic, but 
   # I'm thinking that the selection of each radio element can be passed through the function argument so that
   # we can allow for a "edit scores" style modal
+  
+  ##TODO: See about the ability to add arbitrary color arguments for the purposes of styling
+  ##TODO: Fix alignment on pretty much all elements. 
+  ##TODO: Add minimum height and width conditions in css, since xl is not nearly large enough from what I can tell
+  ##TODO: Get the assists tab scaffolded out as well
+  ##TODO: Add arbitrary buttons for interaction on the "submit score" piece
+    # Thinking there is that we could have one of two buttons display depending on whether 
+    # or not the modal was called for the purpose of score editing or score entry
+  
   ns <- NS(id)
   shiny::modalDialog(
     easyClose = T, size = 'xl',
