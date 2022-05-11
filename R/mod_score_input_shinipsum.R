@@ -34,39 +34,43 @@ mod_score_input_shinipsum_ui <- function(id, scoring_team_color, defense_team_co
           title = 'Scores',
           fluidRow(
             # First, who scored?
-            tagAppendAttributes(
-              shinyWidgets::radioGroupButtons(
-                status = paste('scorer', id),
-                inputId = ns('scorer'),
-                label = 'who scored?',
-                # This is initialized in an unselected state to potentially allow for some custom JS hiding the points
-                # until this is selected. 
-                selected = character(0),
-                choices = c('Dewey', 'Mark', 'Matthew', 'Shaunt'),
-                direction = 'horizontal',
-                individual = T,
-                size = 'lg',
-                checkIcon = list(
-                  yes = tags$i(class = "fa fa-dice")
-                )
-              ),
+            div(
+              h2('Who Scored?'),
+              tagAppendAttributes(
+                shinyWidgets::radioGroupButtons(
+                  status = paste('scorer', id),
+                  inputId = ns('scorer'),
+                  label = NULL,
+                  # This is initialized in an unselected state to potentially allow for some custom JS hiding the points
+                  # until this is selected. 
+                  selected = character(0),
+                  choices = c('Dewey', 'Mark', 'Matthew', 'Shaunt'),
+                  direction = 'horizontal',
+                  individual = T,
+                  size = 'lg',
+                  checkIcon = list(
+                    yes = tags$i(class = "fa fa-dice")
+                  )
+                ),
               # Adds the JS function to handle showing points in the event that a selection is made here
               onclick = "$('#score-input-points').css('display', 'block')"
+             )
             ),
             # Then, how much did they score?
             tagAppendAttributes(
               div(id = 'score-input-points',
+                h2('How many points?'),
                 shinyWidgets::radioGroupButtons(
                   status = paste('points', id),
                   inputId = ns('score'),
                   selected = character(0),
-                  label = 'Points',
+                  label = NULL,
                   choices = c(1, 2, 3, 4, 5, 6, 7),
                   size = 'lg'
                 ),
               style = 'display:none'
               ),
-              onclick = "$('#score-input-modifiers').css('display', 'block')"
+            onclick = "$('#score-input-modifiers').css('display', 'block')"
             ),
             div(id = 'score-input-modifiers',
               fluidRow(
@@ -97,7 +101,7 @@ mod_score_input_shinipsum_ui <- function(id, scoring_team_color, defense_team_co
               style = 'display:none'
             )
           )
-          ),
+          ) %>% tagAppendAttributes(class = 'score-entry-tab'),
         tabPanel(
           icon = shiny::icon('hand-paper'),
           title = 'Assists',
