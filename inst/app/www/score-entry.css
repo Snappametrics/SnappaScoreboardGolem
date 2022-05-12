@@ -16,3 +16,41 @@
 .score-switches {
     text-align: left ;
  }
+ 
+#score-submission-button {
+    display: flex;
+    justify-content: center;
+    
+}
+
+#score-submission-button>button {
+    min-width: 30vw;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.assist-button-well {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+/* Governs the alignment of buttons in the assist well */
+.assist-button-well > div > .btn-group-lg {
+    display: grid;
+    align-content: center;
+    justify-content: space-around;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    align-items: center;
+    column-gap: 1vw;
+    row-gap: 2vh;
+}
+
+.assist-button-well > div > .btn-group-lg > div > .btn {
+    width: 100%;
+    place-self: center;
+}
