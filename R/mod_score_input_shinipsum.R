@@ -133,13 +133,13 @@ mod_score_input_shinipsum_ui <- function(id, scoring_team_color, defense_team_co
           tagAppendAttributes(
             shinyWidgets::actionBttn(
               inputId = ns('score_submit'),
-              label = 'Submit Score',
+              label = ' Submit Score',
               icon = icon('check'),
               style = 'material-flat',
               color = 'success',
               size = 'md'
             ),
-            style = 'display:none'
+            style = 'display:none;'
           )
       )
     )
