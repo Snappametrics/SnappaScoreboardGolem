@@ -3,6 +3,7 @@
 #' @description The Shinipsum implementation of score inputs.
 #'
 #' @param id,input,output,session Internal parameters for {shiny}.
+#' @param scoring_team_color,defense_team_color Hex color arguments to dynamically style the window
 #'
 #' @noRd 
 #'
@@ -70,7 +71,7 @@ mod_score_input_shinipsum_ui <- function(id, scoring_team_color, defense_team_co
                 ),
               style = 'display:none'
               ),
-            onclick = "$('#score-input-modifiers').css('display', 'block')"
+            onclick = "$('#score-input-modifiers').css('display', 'flex'); $('#score-submission-button>button').css('display', 'flex');"
             ),
             div(id = 'score-input-modifiers',
               fluidRow(
@@ -111,7 +112,22 @@ mod_score_input_shinipsum_ui <- function(id, scoring_team_color, defense_team_co
           )
       )
     ),
-    footer = tagList())
+    footer = tagList(
+      div(id = 'score-submission-button',
+          tagAppendAttributes(
+            shinyWidgets::actionBttn(
+              inputId = ns('score_submit'),
+              label = 'Submit Score',
+              icon = icon('check'),
+              style = 'material-flat',
+              color = 'success',
+              size = 'md'
+            ),
+            style = 'display:none'
+          )
+      )
+    )
+  )
 }
     
 #' score_input_shinipsum Server Functions

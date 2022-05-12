@@ -5,3 +5,14 @@
    flex-direction: row;
    text-align: center;
  }
+ 
+ #score-input-modifiers {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+ }
+ /* This is a bit obnoxious because it's an explicit override of the styling for .score-entry-tab */
+.score-switches {
+    text-align: left ;
+ }
