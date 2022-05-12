@@ -39,7 +39,8 @@ golem::add_module(name = "score_input_shinipsum")
 ## Add helper functions ----
 ## Creates fct_* and utils_*
 golem::add_fct( "helpers" ) 
-golem::add_utils( "helpers" )
+golem::add_utils( "helpers")
+golem::add_utils('assist_input_checkbox_button')
 
 ## External resources
 ## Creates .js and .css files at inst/app/www
