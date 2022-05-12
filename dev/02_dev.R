@@ -50,6 +50,8 @@ golem::add_css_file( "custom" )
 # Adds a css file that handles modal dialogs to override shiny defaults
 golem::add_css_file( "modal" )
 golem::add_css_file('score-entry')
+# A css file to control the default styling of buttons
+golem::add_css_file('buttons')
 ## Add internal datasets ----
 ## If you have data in your package
 usethis::use_data_raw( name = "my_dataset", open = FALSE ) 
