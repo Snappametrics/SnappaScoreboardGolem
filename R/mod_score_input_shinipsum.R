@@ -2,28 +2,28 @@
 #'
 #' @description The Shinipsum implementation of score inputs.
 #'
-#' @param id,input,output,session Internal parameters for {shiny}.
+#' @param id,input,output,session Internal parameters for {shiny}. id should be a team designator, "A" or "B".
 #' @param scoring_team_color,defense_team_color Hex color arguments to dynamically style the window
-#'
+#' @param scoring_team_names,defense_team_names Vectors of length 4 (NULLs if there are fewer than 4 players) containing names of players
 #' @noRd 
 #'
 #' @importFrom shiny NS tagList 
 #' @import shinipsum
-mod_score_input_shinipsum_ui <- function(id, scoring_team_color, defense_team_color){
+mod_score_input_shinipsum_ui <- function(id, scoring_team_color, defense_team_color,
+                                         scoring_team_names, defense_team_names){
   # For now, this has some fun stuff around allowing for a progressive selection of elements using some JS. 
   # This will have to be reasoned on in a more comprehensive way when we get to defining server logic, but 
   # I'm thinking that the selection of each radio element can be passed through the function argument so that
   # we can allow for a "edit scores" style modal
   
-  ##TODO: See about the ability to add arbitrary color arguments for the purposes of styling
-  ##TODO: Fix alignment on pretty much all elements. 
-  ##TODO: Add minimum height and width conditions in css, since xl is not nearly large enough from what I can tell
-  ##TODO: Get the assists tab scaffolded out as well
-  ##TODO: Add arbitrary buttons for interaction on the "submit score" piece
-    # Thinking there is that we could have one of two buttons display depending on whether 
-    # or not the modal was called for the purpose of score editing or score entry
-  
+  ##TODO: See about the ability to add arbitrary color arguments for the purposes of styling. Maybe through sass?
+  ##TODO: See if there isn't some way to map over the number of players that are provided here, or maybe just provide a fixed number of elements which are hidden depending on the number of players. In short, 
+  ## move away from reactive UI output in cases where users are not responsible for changing the UI elements. 
   ns <- NS(id)
+  # This "aliasing" feels like kind of a silly thing to do, but so does binding all the html classes with "id".
+  # Thus, this is for clarity
+  team = id 
+  if (team == 'A') opponent = 'B' else if (team == 'B') opponent = 'A'
   shiny::modalDialog(
     easyClose = T, size = 'xl',
     # Content!
@@ -107,11 +107,27 @@ mod_score_input_shinipsum_ui <- function(id, scoring_team_color, defense_team_co
           icon = shiny::icon('hand-paper'),
           title = 'Assists',
           fluidRow(
-            
-          )  
+            column(6,
+                   h3("Assists", class=paste("scoring-header", team)),
+                   assist_input_checkbox_button(scoring_team_names[1], paste0(team, '1'), namespace = ns),
+                   assist_input_checkbox_button(scoring_team_names[2], paste0(team, '2'), namespace = ns),
+                   assist_input_checkbox_button(scoring_team_names[3], paste0(team, '3'), namespace = ns),
+                   assist_input_checkbox_button(scoring_team_names[4], paste0(team, '4'), namespace = ns)
+            ),
+            column(6,
+                   h3("Returns", class=paste("scoring-header", opponent)),
+                   assist_input_checkbox_button(defense_team_names[1], paste0(opponent, '1'), namespace = ns),
+                   assist_input_checkbox_button(defense_team_names[2], paste0(opponent, '2'), namespace = ns),
+                   assist_input_checkbox_button(defense_team_names[3], paste0(opponent, '3'), namespace = ns),
+                   assist_input_checkbox_button(defense_team_names[4], paste0(opponent, '4'), namespace = ns)
+            )
           )
-      )
-    ),
+        ) %>% 
+            tagAppendAttributes(class = paste(team, "assists"))
+        ) %>% 
+          tagAppendAttributes(class = "score-tabs")
+      # Closes outermost taglist for modalBody
+      ),  
     footer = tagList(
       div(id = 'score-submission-button',
           tagAppendAttributes(
@@ -136,9 +152,10 @@ mod_score_input_shinipsum_ui <- function(id, scoring_team_color, defense_team_co
 mod_score_input_shinipsum_server <- function(id){
   moduleServer( id, function(input, output, session){
     ns <- session$ns
+    
     observeEvent(!is.null(input$score), {
       shinyjs::show('points')
-    }) 
+    })
   })
 }
     
