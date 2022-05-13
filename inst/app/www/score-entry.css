@@ -39,7 +39,7 @@
 }
 
 /* Governs the alignment of buttons in the assist well */
-.assist-button-well > div > .btn-group-lg {
+.assist-button-well > div > .checkbox-group-buttons > .btn-group-lg {
     display: grid;
     align-content: center;
     justify-content: space-around;
@@ -50,7 +50,7 @@
     row-gap: 2vh;
 }
 
-.assist-button-well > div > .btn-group-lg > div > .btn {
+.assist-button-well > div > .checkbox-group-buttons > .btn-group-lg > div > .btn {
     width: 100%;
     place-self: center;
 }

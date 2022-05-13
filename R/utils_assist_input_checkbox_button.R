@@ -11,21 +11,22 @@
 assist_input_checkbox_button = function(player_name, namespace_slug, namespace) {
   team = substring(namespace_slug, 1, 1)
   tagAppendAttributes(
-    shinyWidgets::checkboxGroupButtons(
-      label = player_name, 
-      status = paste("assists", team),
-      inputId = namespace(paste0("assist_", namespace_slug)),
-      
-      choiceNames = list(tags$i(" Paddle", class="fas fa-hand-paper"), 
-                         tags$i(" Clink", class="fas fa-assistive-listening-systems"),
-                         tags$i(" Foot", class="fas fa-shoe-prints"),
-                         tags$i(" Header", class="fas fa-podcast")),
-      size = 'lg',
-      choiceValues = c("paddle", "clink", "foot", "head"),
-      direction = "horizontal",
-      individual = T
+    div(
+      h3(player_name),
+      shinyWidgets::checkboxGroupButtons(
+        label = NULL, 
+        status = paste("assists", team),
+        inputId = namespace(paste0("assist_", namespace_slug)),
+        choiceNames = list(tags$i(" Paddle", class="fas fa-hand-paper"), 
+                           tags$i(" Clink", class="fas fa-assistive-listening-systems"),
+                           tags$i(" Foot", class="fas fa-shoe-prints"),
+                           tags$i(" Header", class="fas fa-podcast")),
+        size = 'lg',
+        choiceValues = c("paddle", "clink", "foot", "head"),
+        direction = "horizontal",
+        individual = T
       # Very odd, but if you pass a NULL as player name, it actually shows up here as NA, not NULL. So the check is 'is.na'
-    ), style = dplyr::if_else(is.na(player_name), 'display: none;', 'display:flex'),
-    class = 'assist-button-well'
+      ), class = 'assist-button-well'
+    ), style = dplyr::if_else(is.na(player_name), 'display: none;', 'display:flex;')
   )
 }
