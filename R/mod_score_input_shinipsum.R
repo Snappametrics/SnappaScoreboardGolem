@@ -77,7 +77,7 @@ mod_score_input_shinipsum_ui <- function(id, scoring_team_color, defense_team_co
               fluidRow(
                 h2('Anything Cool Happen?')
               ),
-              wellPanel(class = "score-switches",
+              wellPanel(class = paste0("score-switches ", team),
                 # Was it a paddle?
                 shinyWidgets::materialSwitch(
                   inputId = ns("paddle"), inline = T,
