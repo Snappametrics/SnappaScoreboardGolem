@@ -6,12 +6,14 @@ Description: A scoreboard for tracking beer die.
 License: MIT + file LICENSE
 Imports: 
     attempt,
+    colourpicker,
     config (>= 0.3.1),
     DT,
     glue,
     golem (>= 0.3.1),
     htmltools,
     processx,
+    sass,
     shiny (>= 1.7.0)
 Encoding: UTF-8
 LazyData: true
