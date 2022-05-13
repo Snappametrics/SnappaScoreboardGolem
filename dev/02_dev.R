@@ -29,6 +29,7 @@ usethis::use_package( "RPostgres" )
 usethis::use_package( "dbplyr" )
 usethis::use_package( "keyring" )
 usethis::use_package( "pool" )
+usethis::use_packagee('colourpicker')
 
 ## Add modules ----
 ## Create a module infrastructure in R/
@@ -52,6 +53,8 @@ golem::add_css_file( "modal" )
 golem::add_css_file('score-entry')
 # A css file to control the default styling of buttons
 golem::add_css_file('buttons')
+# This doesn't quite work as expected because you want a scss file, not a sass file
+# golem::add_sass_file('team_colors')
 ## Add internal datasets ----
 ## If you have data in your package
 usethis::use_data_raw( name = "my_dataset", open = FALSE ) 
