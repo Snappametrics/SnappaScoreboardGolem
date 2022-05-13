@@ -30,6 +30,7 @@ usethis::use_package( "dbplyr" )
 usethis::use_package( "keyring" )
 usethis::use_package( "pool" )
 usethis::use_packagee('colourpicker')
+usethis::use_packagee('sass')
 
 ## Add modules ----
 ## Create a module infrastructure in R/
