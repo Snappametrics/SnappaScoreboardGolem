@@ -3,6 +3,24 @@
   2. Control elements which depend on that color
     For example, text color needs to change based on the content of the team's color, since white text looks better than black text against a purple background */
 
+/* The nav tabs on the scoring modal to switch between score and assists. Bit of an anti-pattern since we need
+to style the active tab away from the color (it's classless when it's the inactive tab, and class "active" when open). This also exploits the specificity rule of CSS on a knife's edge which seems jank to me */
+.score-tabs.A > .nav > li > a {
+  color: $color_a;
+}
+
+.score-tabs.A > .nav > .active > a {
+  color: black;
+}
+
+.score-tabs.B > nav > li {
+  color: $color_b;
+}
+
+.score-tabs.B > nav > .active {
+  color: black;
+}
+
 /* The "Who Scored Buttons" */
 .btn-scorer.A.active { 
   color: $color_a; 
@@ -36,6 +54,24 @@ change too, but that's likely to require some JS */
   background-color: $color_b;
 }
 
-.score-switches.SB > div > .material-switch>input[type=checkbox]:checked+label:after {
+.score-switches.B > div > .material-switch>input[type=checkbox]:checked+label:after {
   background-color: $color_b;
 }
+/* The footer buttons */
+.score-submission-button.A > button {
+  background-color: $color_a;
+}
+
+.score-submission-button.B > button {
+  background-color: $color_b;
+}
+
+/* The buttons in assists tab */
+.btn-assists.A.active{
+  color: $color_a;
+}
+.btn-assists.B.active{
+  color: $color_b;
+}
+
+
