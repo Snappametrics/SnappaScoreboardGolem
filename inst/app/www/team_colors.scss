@@ -13,11 +13,11 @@ to style the active tab away from the color (it's classless when it's the inacti
   color: black;
 }
 
-.score-tabs.B > nav > li {
+.score-tabs.B > .nav > li > a {
   color: $color_b;
 }
 
-.score-tabs.B > nav > .active {
+.score-tabs.B > .nav > .active > a {
   color: black;
 }
 

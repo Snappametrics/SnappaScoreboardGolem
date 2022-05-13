@@ -29,8 +29,8 @@ usethis::use_package( "RPostgres" )
 usethis::use_package( "dbplyr" )
 usethis::use_package( "keyring" )
 usethis::use_package( "pool" )
-usethis::use_packagee('colourpicker')
-usethis::use_packagee('sass')
+usethis::use_package('colourpicker')
+usethis::use_package('sass')
 
 ## Add modules ----
 ## Create a module infrastructure in R/
