@@ -17,13 +17,13 @@
     text-align: left ;
  }
  
-#score-submission-button {
+.score-submission-button {
     display: flex;
     justify-content: center;
     
 }
 
-#score-submission-button>button {
+.score-submission-button>button {
     min-width: 30vw;
     display: flex;
     flex-direction: row;
