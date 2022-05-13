@@ -45,7 +45,7 @@ mod_score_input_shinipsum_ui <- function(id, scoring_team_color, defense_team_co
                   # This is initialized in an unselected state to potentially allow for some custom JS hiding the points
                   # until this is selected. 
                   selected = character(0),
-                  choices = c('Dewey', 'Mark', 'Matthew', 'Shaunt'),
+                  choices = scoring_team_names,
                   direction = 'horizontal',
                   individual = T,
                   size = 'lg',
