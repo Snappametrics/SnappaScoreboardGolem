@@ -71,7 +71,7 @@ mod_score_input_shinipsum_ui <- function(id, scoring_team_color, defense_team_co
                 ),
               style = 'display:none'
               ),
-            onclick = "$('#score-input-modifiers').css('display', 'flex'); $('#score-submission-button>button').css('display', 'flex');"
+            onclick = "$('#score-input-modifiers').css('display', 'flex'); $('.score-submission-button>button').css('display', 'flex');"
             ),
             div(id = 'score-input-modifiers',
               fluidRow(
@@ -125,11 +125,11 @@ mod_score_input_shinipsum_ui <- function(id, scoring_team_color, defense_team_co
         ) %>% 
             tagAppendAttributes(class = paste(team, "assists"))
         ) %>% 
-          tagAppendAttributes(class = "score-tabs")
+          tagAppendAttributes(class = paste("score-tabs", team))
       # Closes outermost taglist for modalBody
       ),  
     footer = tagList(
-      div(id = 'score-submission-button',
+      div(class = paste0('score-submission-button ', team),
           tagAppendAttributes(
             shinyWidgets::actionBttn(
               inputId = ns('score_submit'),
