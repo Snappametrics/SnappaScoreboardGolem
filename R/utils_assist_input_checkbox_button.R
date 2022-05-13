@@ -26,7 +26,7 @@ assist_input_checkbox_button = function(player_name, namespace_slug, namespace) 
         direction = "horizontal",
         individual = T
       # Very odd, but if you pass a NULL as player name, it actually shows up here as NA, not NULL. So the check is 'is.na'
-      ), class = 'assist-button-well'
+      ), class = paste('assist-button-well', team)
     ), style = dplyr::if_else(is.na(player_name), 'display: none;', 'display:flex;')
   )
 }
