@@ -1,0 +1,41 @@
+ /* This file specifically exists to do the following: 
+  1. Target all the elements which adhere to the team's color scheme
+  2. Control elements which depend on that color
+    For example, text color needs to change based on the content of the team's color, since white text looks better than black text against a purple background */
+
+/* The "Who Scored Buttons" */
+.btn-scorer.A.active { 
+  color: $color_a; 
+}
+
+.btn-scorer.B.active {
+  color: $color_b
+}
+
+/* The "how many points" buttons */
+.btn-points.A.active {
+  color: $color_a;
+}
+
+.btn-points.B.active {
+  color: $color_b;
+}
+
+/* The slider buttons on the "Anything Cool Happen" Well, and the tracks when activated. Ideally the labels could 
+change too, but that's likely to require some JS */
+
+.score-switches.A > div > .material-switch>input[type=checkbox]:checked+label:before {
+  background-color: $color_a;
+}
+
+.score-switches.A > div > .material-switch>input[type=checkbox]:checked+label:after {
+  background-color: $color_a;
+}
+
+.score-switches.B > div > .material-switch>input[type=checkbox]:checked+label:before {
+  background-color: $color_b;
+}
+
+.score-switches.SB > div > .material-switch>input[type=checkbox]:checked+label:after {
+  background-color: $color_b;
+}
