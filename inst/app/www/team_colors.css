@@ -1,4 +1,0 @@
-/* This file specifically exists to do the following:
-  1. Target all the elements which adhere to the team's color scheme
-  2. Control elements which depend on that color
-    For example, text color needs to change based on the content of the team's color, since white text looks better than black text against a purple background */

@@ -41,7 +41,7 @@ app_server <- function( input, output, session ) {
   })
   
   compiled_css = reactive({
-    sass::sass(sass_input())
+    value = sass::sass(sass_input())
   })
   
   output$team_colors = renderUI({
