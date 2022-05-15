@@ -18,7 +18,6 @@ assist_input_checkbox_button = function(player_name, namespace_slug, namespace) 
         status = paste("assists", team),
         inputId = namespace(paste0("assist_", namespace_slug)),
         choiceNames = list(tags$i(" Paddle", class="fas fa-hand-paper"), 
-                           tags$i(" Clink", class="fas fa-assistive-listening-systems"),
                            tags$i(" Foot", class="fas fa-shoe-prints"),
                            tags$i(" Header", class="fas fa-podcast")),
         size = 'lg',
