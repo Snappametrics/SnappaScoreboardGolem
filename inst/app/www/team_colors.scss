@@ -13,9 +13,17 @@
 }
 
 
+@function text-color($color) {
+  @return if(
+    red($color) * 0.299 + green($color) * 0.587 + blue($color) * 0.114 > 186,
+    #000000, #ffffff
+  );
+}
+
 
 /* The nav tabs on the scoring modal to switch between score and assists. Bit of an anti-pattern since we need
-to style the active tab away from the color (it's classless when it's the inactive tab, and class "active" when open). This also exploits the specificity rule of CSS on a knife's edge which seems jank to me */
+to style the active tab away from the color (it's classless when it's the inactive tab, and class "active" when open). This also exploits the specificity rule of CSS on a knife's edge which seems jank to me, since the same 
+li is being referred to as "li" in one pass and ".active" in another */
 .score-tabs.A > .nav > li > a {
   color: $color_a;
 }
@@ -34,24 +42,24 @@ to style the active tab away from the color (it's classless when it's the inacti
 
 /* The "Who Scored Buttons" */
 .btn-scorer.A.active { 
-  color: $color_a; 
-  background-color: bg-color($color_a);
+  color: text-color($color_a); 
+  background-color: $color_a ;
 }
 
 .btn-scorer.B.active {
-  color: $color_b;
-  background-color: bg-color($color_b);
+  color: text-color($color_b); 
+  background-color: $color_b ;
 }
 
 /* The "how many points" buttons */
 .btn-points.A.active {
-  color: $color_a;
-  background-color: bg-color($color_a);
+  color: text-color($color_a); 
+  background-color: $color_a ;
 }
 
 .btn-points.B.active {
-  color: $color_b;
-  background-color: bg-color($color_b);
+  color: text-color($color_b); 
+  background-color: $color_b ;
 }
 
 /* The slider buttons on the "Anything Cool Happen" Well, and the tracks when activated. Ideally the labels could 
@@ -74,27 +82,23 @@ change too, but that's likely to require some JS */
 }
 /* The footer buttons */
 .score-submission-button.A > button {
+  color: bg-color($color_a);
   background-color: $color_a;
-  background-color: bg-color($color_a);
 }
 
 .score-submission-button.B > button {
-  @if bg_color($color_b) == #000000 {
-      color: $color_b
-  } @else if $color_b != #000000 {
-      color: #ffffff;
-  }
-  background-color: bg-color($color_b);
+  color: text-color($color_b); 
+  background-color: $color_b ;
 }
 
 /* The buttons in assists tab */
 .btn-assists.A.active{
-  color: $color_a;
-  background-color: bg-color($color_a);
+  color: text-color($color_a); 
+  background-color: $color_a ;
 }
 .btn-assists.B.active{
-  color: $color_b;
-  background-color: bg-color($color_b);
+  color: text-color($color_b); 
+  background-color: $color_b ;
 }
 
 
