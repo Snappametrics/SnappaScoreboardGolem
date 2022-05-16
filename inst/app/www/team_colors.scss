@@ -73,21 +73,16 @@ li is being referred to as "li" in one pass and ".active" in another */
 /* The slider buttons on the "Anything Cool Happen" Well, and the tracks when activated. Ideally the labels could 
 change too, but that's likely to require some JS */
 
-.score-switches.A > div > .material-switch>input[type=checkbox]:checked+label:before {
-  background-color: $color_a;
+.btn-score-addon.A.active {
+  color: text-color($color_a); 
+  background-color: $color_a ;
 }
 
-.score-switches.A > div > .material-switch>input[type=checkbox]:checked+label:after {
-  background-color: $color_a;
+.btn-score-addon.B.active {
+  color: text-color($color_b); 
+  background-color: $color_b ;
 }
 
-.score-switches.B > div > .material-switch>input[type=checkbox]:checked+label:before {
-  background-color: $color_b;
-}
-
-.score-switches.B > div > .material-switch>input[type=checkbox]:checked+label:after {
-  background-color: $color_b;
-}
 /* The footer buttons */
 .score-submission-button.A > button {
   color: text-color($color_a);
@@ -106,7 +101,25 @@ change too, but that's likely to require some JS */
 }
 .btn-assists.B.active{
   color: text-color($color_b); 
-  background-color: $color_b ;
+  background-color: $color_b ; 
 }
 
+.bootstrap-switch-id-A-related_point > .bootstrap-switch-container > .bootstrap-switch-handle-on {
+  background-color: $color_a !important;
+  color: text-color($color_a);
+}
 
+.bootstrap-switch-id-B-related_point > .bootstrap-switch-container > .bootstrap-switch-handle-on {
+  background-color: $color_b !important;
+  color: text-color($color_b);
+}
+
+/* Important is used here because we have to override some really stubborn bootstrap defaults */
+.bootstrap-switch-id-A-related_point.bootstrap-switch-focused {
+  border-color: $color_a !important;
+  box-shadow: none !important ;
+}
+.bootstrap-switch-id-B-related_point.bootstrap-switch-focused {
+  border-color: $color_b !important;
+  box-shadow: none !important;
+}
