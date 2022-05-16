@@ -73,36 +73,47 @@ mod_score_input_shinipsum_ui <- function(id, scoring_team_color, defense_team_co
               ),
             onclick = "$('#score-input-modifiers').css('display', 'flex'); $('.score-submission-button').css('display', 'flex');"
             ),
-            div(id = 'score-input-modifiers',
-              fluidRow(
-                h2('Anything Cool Happen?')
-              ),
-              wellPanel(class = paste0("score-switches ", team),
-                # Was it a paddle?
-                shinyWidgets::materialSwitch(
-                  inputId = ns("paddle"), inline = T,
-                  label = tags$i(" Paddle", class="fas fa-hand-paper")
+            fluidRow(
+              div(id = 'score-input-modifiers',
+                column(6, class = paste('score-details', team),
+                  h2('Anything Cool Happen?'),
+                  wellPanel(class = paste("score-switches", team),
+                    # Was it a paddle?
+                    shinyWidgets::materialSwitch(
+                      inputId = ns("paddle"), inline = T,
+                      label = tags$i(" Paddle", class="fas fa-hand-paper")
+                    ),
+                    # Was it a clink?
+                    shinyWidgets::materialSwitch(
+                      inputId = ns("clink"), inline = T,
+                      label = tags$i(" Clink ", class="fas fa-assistive-listening-systems")
+                    ),
+                    # feet?
+                    shinyWidgets::materialSwitch(
+                      inputId = ns("foot"), inline = T,
+                      label = tags$i(" Foot  ", class="fas fa-shoe-prints")
+                    ),
+                    # head?
+                    shinyWidgets::materialSwitch(
+                      inputId = ns("head"), inline = T,
+                      label = tags$i(" Header", class="fas fa-podcast")
+                    )
+                  )
+                  ),
+                column(6, class = paste('previous-score', team),
+                  h2('Same Throw as Previous Point?'),
+                  shinyWidgets::switchInput(
+                    inputId = ns('related_point'),
+                    onLabel = 'Yes',
+                    offLabel = 'No',
+                    size = 'large'
+                  )
                 ),
-                # Was it a clink?
-                shinyWidgets::materialSwitch(
-                  inputId = ns("clink"), inline = T,
-                  label = tags$i(" Clink", class="fas fa-assistive-listening-systems")
-                ),
-                # feet?
-                shinyWidgets::materialSwitch(
-                  inputId = ns("foot"), inline = T,
-                  label = tags$i(" Foot", class="fas fa-shoe-prints")
-                ),
-                # head?
-                shinyWidgets::materialSwitch(
-                  inputId = ns("head"), inline = T,
-                  label = tags$i(" Header", class="fas fa-podcast")
-                )
-              ),
               style = 'display:none'
+              )
             )
           )
-          ) %>% tagAppendAttributes(class = 'score-entry-tab'),
+        ) %>% tagAppendAttributes(class = 'score-entry-tab'),
         tabPanel(
           icon = shiny::icon('hand-paper'),
           title = 'Assists',
@@ -130,21 +141,16 @@ mod_score_input_shinipsum_ui <- function(id, scoring_team_color, defense_team_co
       ),  
     footer = tagList(
      tagAppendAttributes(
-        div(class = paste0('score-submission-button ', team),
-          shinyWidgets::awesomeCheckbox(
-            inputId = ns('linked-score'),
-            label = 'Same Toss as Previous Point'
-          ),
-          shinyWidgets::actionBttn(
-            inputId = ns('score_submit'),
-            label = ' Submit Score',
-            icon = icon('check'),
-            style = 'material-flat',
-            color = 'success',
-            size = 'md'
-          )
+        shinyWidgets::actionBttn(
+          inputId = ns('score_submit'),
+          label = ' Submit Score',
+          icon = icon('check'),
+          style = 'material-flat',
+          color = 'success',
+          size = 'md'
         ),
-        style = 'display:none;'
+        style = 'display:none;',
+        class = paste0('score-submission-button ', team)
       )
     )
   )

@@ -12,13 +12,31 @@
  
  #score-input-modifiers {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     justify-content: center;
     align-items: center;
+    min-height: 25vh;
+ }
+ 
+ .score-details {
+     display: flex;
+     flex-direction: column;
+     justify-content: center;
+     align-items: center;
+ }
+ 
+ .previous-score {
+     display: flex;
+     flex-direction:column;
+     justify-content: start;
+     align-items: center;
  }
  /* This is a bit obnoxious because it's an explicit override of the styling for .score-entry-tab */
 .score-switches {
-    text-align: left ;
+    text-align: left;
+    display: grid;
+    grid-template-rows: repeat(2, 1fr);
+    grid-template-columns: repeat(2, 1fr);
  }
  
 .score-submission-button {
