@@ -21,7 +21,7 @@ assist_input_checkbox_button = function(player_name, namespace_slug, namespace) 
                            tags$i(" Foot", class="fas fa-shoe-prints"),
                            tags$i(" Header", class="fas fa-podcast")),
         size = 'lg',
-        choiceValues = c("paddle", "clink", "foot", "head"),
+        choiceValues = c("paddle", "foot", "head"),
         direction = "horizontal",
         individual = T
       # Very odd, but if you pass a NULL as player name, it actually shows up here as NA, not NULL. So the check is 'is.na'
