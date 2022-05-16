@@ -77,38 +77,32 @@ mod_score_input_shinipsum_ui <- function(id, scoring_team_color, defense_team_co
               div(id = 'score-input-modifiers',
                 column(6, class = paste('score-details', team),
                   h2('Anything Cool Happen?'),
-                  wellPanel(class = paste("score-switches", team),
-                    # Was it a paddle?
-                    shinyWidgets::materialSwitch(
-                      inputId = ns("paddle"), inline = T,
-                      label = tags$i(" Paddle", class="fas fa-hand-paper")
-                    ),
-                    # Was it a clink?
-                    shinyWidgets::materialSwitch(
-                      inputId = ns("clink"), inline = T,
-                      label = tags$i(" Clink ", class="fas fa-assistive-listening-systems")
-                    ),
-                    # feet?
-                    shinyWidgets::materialSwitch(
-                      inputId = ns("foot"), inline = T,
-                      label = tags$i(" Foot  ", class="fas fa-shoe-prints")
-                    ),
-                    # head?
-                    shinyWidgets::materialSwitch(
-                      inputId = ns("head"), inline = T,
-                      label = tags$i(" Header", class="fas fa-podcast")
-                    )
-                  )
-                  ),
-                column(6, class = paste('previous-score', team),
-                  h2('Same Throw as Previous Point?'),
-                  shinyWidgets::switchInput(
-                    inputId = ns('related_point'),
-                    onLabel = 'Yes',
-                    offLabel = 'No',
-                    size = 'large'
+                  shinyWidgets::checkboxGroupButtons(
+                    label = NULL, 
+                    status = paste("score-addon", team),
+                    inputId = ns('score_addons'),
+                    choiceNames = list(tags$i(" Paddle", class="fas fa-hand-paper"),
+                                       tags$i(" Clink", class="fas fa-assistive-listening-systems"),
+                                       tags$i(" Foot", class="fas fa-shoe-prints"),
+                                       tags$i(" Header", class="fas fa-podcast")),
+                    size = 'lg',
+                    choiceValues = c("paddle", 'clink', "foot", "head"),
+                    direction = "horizontal",
+                    individual = T
                   )
                 ),
+                column(6, class = paste('previous-score', team),
+                  h2('Same Throw as Previous Point?'),
+                  tagAppendAttributes(
+                    shinyWidgets::switchInput(
+                      inputId = ns('related_point'),
+                      onLabel = 'Yes',
+                      offLabel = 'No',
+                      size = 'large'
+                    ),
+                    class = paste('related-score-input', team)
+                  )
+                  ),
               style = 'display:none'
               )
             )
