@@ -28,7 +28,7 @@ mod_score_input_shinipsum_ui <- function(id, scoring_team_color, defense_team_co
     easyClose = T, size = 'xl',
     # Content!
     tagList(
-      h2('Team Scored'),
+      h2(paste0('Team ', team, ' Scored'), class = paste0('score-modal-header ', team)),
       tabsetPanel(
         tabPanel(
           icon = shiny::icon('dice'),
@@ -71,7 +71,7 @@ mod_score_input_shinipsum_ui <- function(id, scoring_team_color, defense_team_co
                 ),
               style = 'display:none'
               ),
-            onclick = "$('#score-input-modifiers').css('display', 'flex'); $('.score-submission-button>button').css('display', 'flex');"
+            onclick = "$('#score-input-modifiers').css('display', 'flex'); $('.score-submission-button').css('display', 'flex');"
             ),
             div(id = 'score-input-modifiers',
               fluidRow(
@@ -129,18 +129,22 @@ mod_score_input_shinipsum_ui <- function(id, scoring_team_color, defense_team_co
       # Closes outermost taglist for modalBody
       ),  
     footer = tagList(
-      div(class = paste0('score-submission-button ', team),
-          tagAppendAttributes(
-            shinyWidgets::actionBttn(
-              inputId = ns('score_submit'),
-              label = ' Submit Score',
-              icon = icon('check'),
-              style = 'material-flat',
-              color = 'success',
-              size = 'md'
-            ),
-            style = 'display:none;'
+     tagAppendAttributes(
+        div(class = paste0('score-submission-button ', team),
+          shinyWidgets::awesomeCheckbox(
+            inputId = ns('linked-score'),
+            label = 'Same Toss as Previous Point'
+          ),
+          shinyWidgets::actionBttn(
+            inputId = ns('score_submit'),
+            label = ' Submit Score',
+            icon = icon('check'),
+            style = 'material-flat',
+            color = 'success',
+            size = 'md'
           )
+        ),
+        style = 'display:none;'
       )
     )
   )
