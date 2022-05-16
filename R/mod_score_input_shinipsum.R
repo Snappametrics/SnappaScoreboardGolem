@@ -134,7 +134,7 @@ mod_score_input_shinipsum_ui <- function(id, scoring_team_color, defense_team_co
       # Closes outermost taglist for modalBody
       ),  
     footer = tagList(
-     tagAppendAttributes(
+     div(
         shinyWidgets::actionBttn(
           inputId = ns('score_submit'),
           label = ' Submit Score',
