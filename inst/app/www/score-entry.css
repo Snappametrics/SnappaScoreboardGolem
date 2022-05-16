@@ -25,11 +25,39 @@
      align-items: center;
  }
  
+.A-score_addons_label, .B-score_addons_label {
+    display: grid;
+    align-content: center;
+    justify-content: space-around;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    align-items: center;
+    column-gap: 1vw;
+    row-gap: 2vh;
+}
+ 
+#A-score_addons > .btn-group-lg, #B-score_addons > .btn-group-lg {
+    display: grid;
+    align-content: center;
+    justify-content: space-around;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    align-items: center;
+    column-gap: 1vw;
+    row-gap: 2vh;
+}
+#A-score_addons > .btn-group-lg > div > .btn, #B-score_addons > .btn-group-lg > div > .btn {
+    width: 100%;
+    place-self: center;
+}
+
  .previous-score {
      display: flex;
      flex-direction:column;
      justify-content: start;
      align-items: center;
+    /* This is not a good way to do this */
+     min-height: 24vh;
  }
  /* This is a bit obnoxious because it's an explicit override of the styling for .score-entry-tab */
 .score-switches {
