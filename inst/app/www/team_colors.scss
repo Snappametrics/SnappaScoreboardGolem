@@ -5,13 +5,6 @@
 
 // This function is fun because it allows us to do some changing around of values based on the hex code of each color. Named bg-color because that's the most ideal use case for us. You can find the details at the link below
 // https://stackoverflow.com/a/3943023/6637133
-@function bg-color($color) {
-  @return if(
-    red($color) * 0.299 + green($color) * 0.587 + blue($color) * 0.114 > 186,
-    #000000, #ffffff
-  );
-}
-
 
 @function text-color($color) {
   @return if(
@@ -24,6 +17,21 @@
 /* The nav tabs on the scoring modal to switch between score and assists. Bit of an anti-pattern since we need
 to style the active tab away from the color (it's classless when it's the inactive tab, and class "active" when open). This also exploits the specificity rule of CSS on a knife's edge which seems jank to me, since the same 
 li is being referred to as "li" in one pass and ".active" in another */
+
+.score-modal-header.A {
+  color: $color_a;
+}
+.score-modal-header.B {
+  color: $color_b;
+}
+
+.scoring-header.A {
+  color: $color_a;
+}
+.scoring-header.B {
+  color: $color_b;
+}
+
 .score-tabs.A > .nav > li > a {
   color: $color_a;
 }
@@ -82,7 +90,7 @@ change too, but that's likely to require some JS */
 }
 /* The footer buttons */
 .score-submission-button.A > button {
-  color: bg-color($color_a);
+  color: text-color($color_a);
   background-color: $color_a;
 }
 

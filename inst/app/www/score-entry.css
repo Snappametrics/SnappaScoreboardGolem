@@ -1,3 +1,7 @@
+.score-modal-header {
+    text-align: center
+}
+ 
  .score-entry-tab {
    display: flex;
    justify-content: center;
@@ -38,19 +42,6 @@
     align-items: center;
 }
 
-/* Governs the alignment of buttons in the assist well */
-.assist-button-well > div > .checkbox-group-buttons > .btn-group-lg {
-    display: grid;
-    align-content: center;
-    justify-content: space-around;
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: repeat(2, 1fr);
-    align-items: center;
-    column-gap: 1vw;
-    row-gap: 2vh;
-}
-
-.assist-button-well > div > .checkbox-group-buttons > .btn-group-lg > div > .btn {
-    width: 100%;
-    place-self: center;
+.scoring-header {
+    text-align: center;
 }
