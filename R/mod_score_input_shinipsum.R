@@ -113,14 +113,14 @@ mod_score_input_shinipsum_ui <- function(id, scoring_team_color, defense_team_co
           title = 'Assists',
           fluidRow(
             column(6,
-                   h3("Assists", class=paste("scoring-header", team)),
+                   h2("Assists", class=paste("scoring-header", team)),
                    assist_input_checkbox_button(scoring_team_names[1], paste0(team, '1'), namespace = ns),
                    assist_input_checkbox_button(scoring_team_names[2], paste0(team, '2'), namespace = ns),
                    assist_input_checkbox_button(scoring_team_names[3], paste0(team, '3'), namespace = ns),
                    assist_input_checkbox_button(scoring_team_names[4], paste0(team, '4'), namespace = ns)
             ),
             column(6,
-                   h3("Returns", class=paste("scoring-header", opponent)),
+                   h2("Returns", class=paste("scoring-header", opponent)),
                    assist_input_checkbox_button(defense_team_names[1], paste0(opponent, '1'), namespace = ns),
                    assist_input_checkbox_button(defense_team_names[2], paste0(opponent, '2'), namespace = ns),
                    assist_input_checkbox_button(defense_team_names[3], paste0(opponent, '3'), namespace = ns),
