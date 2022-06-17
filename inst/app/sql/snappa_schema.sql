@@ -40,7 +40,8 @@ CREATE SCHEMA snappa
         id SERIAL, 
         player integer REFERENCES players,
         
-        PRIMARY KEY (id, player)
+        PRIMARY KEY (id, player),
+        FOREIGN KEY (id) REFERENCES teams
     )
     
     CREATE TABLE game_teams(
